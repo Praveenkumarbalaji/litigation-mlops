@@ -1,27 +1,88 @@
+# 🧠 Litigation MLOps
 
-# Litigation MLOps Workflow
+A containerized machine learning application that predicts litigation outcomes using a trained scikit-learn model, exposed via a FastAPI interface and Dockerized for seamless deployment.
 
-This is an MLOps project focused on building a machine learning pipeline for litigation data science. The workflow includes data ingestion, preprocessing, model training, deployment, CI/CD integration, and monitoring.
+---
 
-## How to Run
+## 📦 Features
 
-1. Create a virtual environment and activate it:
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # on Windows, use venv\Scripts\activate
-    ```
+- 📊 Predicts case outcomes (Win/Loss) using basic case details
+- ⚡ FastAPI backend for clean REST API
+- 🐳 Dockerized for consistent deployment
+- 🤖 Pretrained scikit-learn model included
+- 🔁 CI/CD enabled with GitHub Actions
+- 🧪 Local dev & testing with `uvicorn`, `pytest`
 
-2. Install dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
+---
 
-3. Run the FastAPI app locally:
-    ```bash
-    uvicorn api.app:app --reload
-    ```
+## 🚀 Docker Hub
 
-4. Test the pipeline:
-    ```bash
-    pytest
-    ```
+Image is publicly available on Docker Hub:  
+🔗 [https://hub.docker.com/r/eddy35/litigation-mlops](https://hub.docker.com/r/eddy35/litigation-mlops)
+
+### 🐳 Run from Docker Hub
+
+```bash
+docker pull eddy35/litigation-mlops
+docker run -d -p 8000:8000 eddy35/litigation-mlops
+```
+
+---
+
+## 📡 API Usage
+
+Once running, you can POST to the `/predict` endpoint:
+
+```bash
+curl -X POST http://127.0.0.1:8000/predict \
+  -H "Content-Type: application/json" \
+  -d '{"case_number": "12345", "plaintiff": "John Doe", "defendant": "Jane Smith"}'
+```
+
+### ✅ Sample Response:
+
+```json
+{
+  "prediction": "loss"
+}
+```
+
+---
+
+## 🧪 Local Development
+
+### 🔧 Setup
+
+```bash
+python -m venv venv
+source venv/bin/activate  # or venv\Scripts\activate on Windows
+pip install -r requirements.txt
+```
+
+### ▶️ Run Locally
+
+```bash
+uvicorn api.app:app --reload
+```
+
+### 🧪 Run Tests
+
+```bash
+pytest
+```
+
+---
+
+## ⚙️ CI/CD Pipeline
+
+This project includes a GitHub Actions workflow:
+
+- ✅ Lints and tests on push
+- 🐳 Builds the Docker image
+- 🚀 Supports Docker Hub publishing (manual)
+
+---
+
+## 📝 License
+
+MIT License © 2025  
