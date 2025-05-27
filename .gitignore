@@ -1,0 +1,12 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.db
+.DS_Store
+*.ipynb_checkpoints
+litigation_mlops.zip
+*.pkl
+tf-env/
